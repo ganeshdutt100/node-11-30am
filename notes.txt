@@ -1,0 +1,656 @@
+ 1. What is Node.js?
+
+Node.js is an open-source, cross-platform JavaScript runtime environment that allows us to execute JavaScript code outside the browser.
+
+Normally, JavaScript runs inside a web browser such as Chrome, Firefox, or Edge.
+
+With Node.js, we can run JavaScript directly on the computer/server.
+
+ Simple Example
+
+Without Node.js:
+
+text
+JavaScript
+     ↓
+  Browser
+     ↓
+  Executes
+
+
+With Node.js:
+
+text
+JavaScript
+     ↓
+  Node.js
+     ↓
+  Executes outside browser
+
+
+So, the most important thing to remember is:
+
+> JavaScript is a programming language, while Node.js is a runtime environment that allows JavaScript to run outside the browser.
+
+---
+
+ 2. Why was Node.js created?
+
+Initially, JavaScript was mainly used for frontend development.
+
+For example:
+
+ Handling button clicks
+ Form validation
+ DOM manipulation
+ Animations
+ Changing webpage content
+ Making API requests
+
+For backend development, developers traditionally used languages such as:
+
+ Java
+ PHP
+ Python
+ C
+ Ruby
+
+The idea behind Node.js was to allow developers to use JavaScript on the server side as well.
+
+So instead of using:
+
+text
+Frontend → JavaScript
+Backend  → Java / PHP / Python
+
+
+we can use:
+
+text
+Frontend → JavaScript
+Backend  → JavaScript + Node.js
+
+
+This is one of the major reasons Node.js became very popular.
+
+---
+
+ 3. Node.js is NOT a programming language
+
+This is very important for beginners.
+
+Students often think:
+
+> "Node.js is another programming language."
+
+That is incorrect.
+
+ JavaScript
+
+JavaScript is a programming language.
+
+ Node.js
+
+Node.js is a runtime environment for executing JavaScript outside the browser.
+
+Think of it like this:
+
+text
+JavaScript
+    ↓
+Programming Language
+
+Node.js
+    ↓
+Environment to execute JavaScript
+
+
+---
+
+ 4. What is a Runtime Environment?
+
+A runtime environment is an environment that provides everything necessary to execute a program.
+
+For example, when JavaScript runs in Chrome:
+
+text
+JavaScript Code
+      ↓
+Chrome Browser
+      ↓
+JavaScript Engine
+      ↓
+Code Execution
+
+
+When JavaScript runs using Node.js:
+
+text
+JavaScript Code
+      ↓
+Node.js
+      ↓
+V8 JavaScript Engine
+      ↓
+Code Execution
+
+
+So Node.js provides an environment where JavaScript code can execute without a browser.
+
+---
+
+ 5. What is V8 Engine?
+
+Node.js is built on Google Chrome's V8 JavaScript engine.
+
+V8 is responsible for executing JavaScript code.
+
+The basic flow is:
+
+text
+JavaScript Code
+      ↓
+     V8
+      ↓
+Machine-level execution
+
+
+The V8 engine is also used by Google Chrome.
+
+Therefore:
+
+text
+Chrome
+  ↓
+V8 Engine
+  ↓
+JavaScript
+
+Node.js
+  ↓
+V8 Engine
+  ↓
+JavaScript
+
+
+---
+
+ 6. Who created Node.js?
+
+Node.js was initially created by Ryan Dahl in 2009.
+
+The main idea was to create a way to use JavaScript for server-side programming and efficiently handle many simultaneous connections.
+
+Today, Node.js is an open-source project with a huge ecosystem of developers and packages.
+
+---
+
+ 7. What can we build with Node.js?
+
+Node.js is mainly used for backend and server-side development.
+
+We can build:
+
+ Web Servers
+
+text
+Client
+   ↓
+Request
+   ↓
+Node.js Server
+   ↓
+Response
+
+
+ REST APIs
+
+For example:
+
+text
+GET     /users
+POST    /users
+PUT     /users/10
+DELETE  /users/10
+
+
+ Authentication Systems
+
+Node.js can be used for:
+
+ Login
+ Signup
+ JWT authentication
+ Role-based authentication
+ OAuth
+
+ Database Applications
+
+Node.js can communicate with databases such as:
+
+ MongoDB
+ MySQL
+ PostgreSQL
+ Redis
+
+ Real-Time Applications
+
+For example:
+
+ Chat applications
+ Live notifications
+ Real-time dashboards
+ Online games
+
+ E-commerce Applications
+
+For example:
+
+text
+React
+  ↓
+Node.js
+  ↓
+Express
+  ↓
+MongoDB
+
+
+---
+
+ 8. Why is Node.js popular?
+
+There are several important reasons.
+
+ 1. JavaScript everywhere
+
+Developers can use JavaScript for both frontend and backend.
+
+text
+Frontend → JavaScript
+Backend  → JavaScript
+
+
+ 2. Fast execution
+
+Node.js uses the V8 engine, which is designed for high-performance JavaScript execution.
+
+ 3. Asynchronous
+
+Node.js supports asynchronous programming.
+
+It does not need to wait unnecessarily for operations such as:
+
+ Database operations
+ File operations
+ Network requests
+
+ 4. Non-blocking I/O
+
+This is one of the most important features of Node.js.
+
+Node.js can start an I/O operation and continue handling other work instead of waiting for that operation to finish.
+
+ 5. Large ecosystem
+
+Node.js has a huge number of packages available through NPM.
+
+---
+
+ 9. What is Non-Blocking I/O?
+
+Let's understand it with a simple example.
+
+Suppose a server receives a request to get data from a database.
+
+A blocking approach would look like:
+
+text
+Request
+   ↓
+Database Operation
+   ↓
+WAIT
+   ↓
+Database Response
+   ↓
+Send Response
+
+
+During the wait, the program may be unable to efficiently handle other work.
+
+Node.js follows a non-blocking approach:
+
+text
+Request
+   ↓
+Start Database Operation
+   ↓
+Continue handling other work
+   ↓
+Other Request
+   ↓
+Other Request
+   ↓
+Database Result
+   ↓
+Handle Result
+   ↓
+Send Response
+
+
+This makes Node.js particularly useful for applications that handle a large number of concurrent I/O operations.
+
+---
+
+ 10. Event-Driven Architecture
+
+Node.js is also event-driven.
+
+An event is something that happens in the application.
+
+For example:
+
+text
+Request received
+       ↓
+      Event
+       ↓
+Event Handler
+       ↓
+Process Request
+       ↓
+Send Response
+
+
+Another example:
+
+text
+File reading completed
+       ↓
+      Event
+       ↓
+Execute required function
+
+
+Node.js uses an event loop to coordinate asynchronous operations and callbacks.
+
+You will study the Event Loop in detail later.
+
+---
+
+ 11. Is Node.js Single-Threaded?
+
+Yes, Node.js uses a single main JavaScript thread for executing JavaScript code.
+
+But this does not mean Node.js can handle only one request at a time.
+
+Node.js uses asynchronous I/O and underlying system mechanisms to handle many operations efficiently.
+
+Conceptually:
+
+text
+                 Node.js
+                    ↓
+           Main JavaScript Thread
+                    ↓
+        ┌───────────┼───────────┐
+        ↓           ↓           ↓
+      Request     Request     Request
+        ↓           ↓           ↓
+       DB          File        API
+        ↓           ↓           ↓
+        └──── Asynchronous ─────┘
+                    ↓
+                Responses
+
+
+We will study this properly when we cover:
+
+ Event Loop
+ Call Stack
+ Callback Queue
+ Microtask Queue
+ Asynchronous Programming
+
+---
+
+ 12. Node.js vs JavaScript
+
+| JavaScript                   | Node.js                          |
+| ---------------------------- | -------------------------------- |
+| Programming language         | Runtime environment              |
+| Can run in browsers          | Runs JavaScript outside browsers |
+| Commonly used for frontend   | Commonly used for backend        |
+| Provides browser APIs        | Provides server-side APIs        |
+| Has access to DOM in browser | No browser DOM by default        |
+| Uses browser environment     | Uses Node.js runtime environment |
+
+---
+
+ 13. Node.js vs Browser
+
+In a browser, we can work with the DOM:
+
+javascript
+document.getElementById("title");
+
+
+Because the browser provides the document object.
+
+In Node.js, there is no browser DOM by default.
+
+Instead, Node.js provides APIs for server-side tasks.
+
+For example, Node.js provides the File System (fs) module.
+
+javascript
+const fs = require("fs");
+
+
+This allows us to work with files.
+
+---
+
+ 14. What is NPM?
+
+Another important term is NPM.
+
+NPM stands for Node Package Manager.
+
+It is used to install and manage packages in Node.js projects.
+
+For example:
+
+bash
+npm install express
+
+
+This installs Express.js into our project.
+
+Other examples:
+
+bash
+npm install mongoose
+npm install cors
+npm install dotenv
+npm install jsonwebtoken
+
+
+NPM is one of the biggest reasons the Node.js ecosystem is so powerful.
+
+---
+
+ 15. What is Express.js?
+
+Students should also understand that Node.js and Express.js are not the same thing.
+
+ Node.js
+
+Runtime environment.
+
+ Express.js
+
+A web framework built for Node.js.
+
+text
+Node.js
+   ↓
+Express.js
+   ↓
+Backend Application
+   ↓
+REST API
+
+
+For example, Node.js allows us to run JavaScript on the server, while Express makes it much easier to create routes, APIs, middleware, and web servers.
+
+---
+
+ 16. Node.js in MERN Stack
+
+Since you are teaching MERN, connect today's topic with MERN.
+
+MERN stands for:
+
+text
+M → MongoDB
+E → Express.js
+R → React.js
+N → Node.js
+
+
+The architecture looks like:
+
+text
+             User
+               ↓
+             React
+               ↓
+          HTTP Request
+               ↓
+        Node.js + Express
+               ↓
+            MongoDB
+               ↓
+           Response
+               ↓
+             React
+
+
+Here:
+
+ React → Frontend
+ Node.js → Runtime environment
+ Express.js → Backend framework
+ MongoDB → Database
+
+---
+
+ 17. Simple Real-Life Example
+
+You can explain Node.js using a restaurant example.
+
+Imagine a restaurant.
+
+text
+Customer
+   ↓
+Waiter
+   ↓
+Kitchen
+   ↓
+Food
+   ↓
+Customer
+
+
+Suppose the waiter gives an order to the kitchen.
+
+The waiter does not stand in the kitchen waiting for the food.
+
+Instead, the waiter can:
+
+text
+Take Order 1
+     ↓
+Send to Kitchen
+     ↓
+Take Order 2
+     ↓
+Send to Kitchen
+     ↓
+Take Order 3
+     ↓
+Serve completed Order
+
+
+This is a simple way to introduce the idea of asynchronous and non-blocking operations in Node.js.
+
+---
+
+ 18. Basic Node.js Flow
+
+Finally, explain this flow to students:
+
+text
+JavaScript Code
+       ↓
+     Node.js
+       ↓
+    V8 Engine
+       ↓
+  JavaScript Execution
+       ↓
+   Node.js APIs
+       ↓
+Server / File System / Network / Database
+
+
+And in a real MERN application:
+
+text
+React Frontend
+      ↓
+ HTTP Request
+      ↓
+Express + Node.js
+      ↓
+Business Logic
+      ↓
+MongoDB
+      ↓
+HTTP Response
+      ↓
+React Frontend
+
+
+ What students should remember from the first class
+
+By the end of today's introduction, students should be able to answer these questions:
+
+1. What is Node.js?
+   → An open-source, cross-platform JavaScript runtime environment.
+
+2. Why do we use Node.js?
+   → To run JavaScript outside the browser, especially for backend/server-side development.
+
+3. Is Node.js a programming language?
+   → No. JavaScript is the programming language; Node.js is the runtime environment.
+
+4. Which JavaScript engine does Node.js use?
+   → Google's V8 JavaScript engine.
+
+5. What are important features of Node.js?
+   → Event-driven architecture, asynchronous programming, and non-blocking I/O.
+
+6. What is NPM?
+   → Node Package Manager, used to install and manage packages.
+
+7. What is Express.js?
+   → A web framework built on top of Node.js.
+
+8. Where is Node.js used?
+   → APIs, web servers, authentication systems, real-time applications, e-commerce backends, and other server-side applications.
+
+For today's first class, this theory is enough. At the end, you can do a very small practical: install Node.js, check node -v and npm -v, and run a simple console.log("Hello Node.js").
