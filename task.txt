@@ -1,0 +1,29 @@
+
+Task Name: Build a Multi-Route Node.js Server
+
+Objective:
+Extend the basic Node.js HTTP server to handle different URL routes, set appropriate headers, and send dynamic HTML and JSON responses.
+
+Task Requirements:
+
+Route 1 (/ - Home Page):
+
+Serve HTML content with Content-Type: text/html.
+
+Display an <h1> heading: "Welcome to Node.js Server".
+
+Route 2 (/about - About Page):
+
+Serve an HTML page containing an <h2> title and a short paragraph with the student's name and roll number.
+
+Route 3 (/api/student - API Endpoint):
+
+Set Content-Type: application/json.
+
+Send a JSON response with student details (e.g., { "name": "Alex", "course": "Full Stack", "status": "Enrolled" }).
+
+Route 4 (404 Page / Any Unhandled Route):
+
+Return an HTTP status code of 404.
+
+Serve HTML displaying a red heading: "<h1 style='color: red;'>404 - Page Not Found</h1>".
