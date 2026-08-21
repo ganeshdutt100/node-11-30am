@@ -28,3 +28,32 @@ Route 4 (404 Page / Any Unhandled Route):
 Return an HTTP status code of 404.
 
 Serve HTML displaying a red heading: "<h1 style='color: red;'>404 - Page Not Found</h1>".
+
+-----------------------new Task ---------------------------
+1-  Basic Task (Custom File Cloner & Chunk Monitor)
+
+- Setup: Create a file named source.txt and populate it with 5–10 lines of sample text.
+
+- Requirements:
+
+   - Read source.txt using fs.createReadStream (set highWaterMark: 64 to force small chunks for testing).
+
+       sol - const readStream  = fs.createReadStream('source.txt',{highWaterMark:64})
+
+   - Write the incoming data to destination.txt using fs.createWriteStream.
+        sol -  const writeStream  = fs.createWriteStream('destination.txt')
+  
+
+   - Listen to the data event and log the chunk sequence and size: Received chunk: <length in bytes>.
+      sol = 
+           let chunksCount =  0;
+
+           readStream.on('data' , (chunk)=>{
+            chunksCount++
+           
+            console.log(`Received Chunks ${chunksCount}: ${chunk.length} bytes`)
+           })
+
+   - Handle error events on both read and write streams.
+
+   - Listen to the finish or end event and log: File successfully cloned!.

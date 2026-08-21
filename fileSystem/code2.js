@@ -36,3 +36,21 @@ const { finished } = require("stream");
 // const data = fs.readFileSync("task.txt");
 // console.log(data);
 // console.log(data.toString());
+const readStream = fs.createReadStream("task.txt", { highWaterMark: 64 });
+const writeStream = fs.createWriteStream("destination.txt");
+
+let chunksCount = 0;
+
+readStream.on("data", (chunk) => {
+  chunksCount++;
+  console.log(`Received Chunks ${chunksCount}: ${chunk.length} bytes`);
+});
+
+readStream.pipe(writeStream);
+
+writeStream.on("finish", () => {
+  console.log("finished");
+});
+
+readStream.on("error", (err) => console.error(err));
+writeStream.on("error", (err) => console.error(err));
