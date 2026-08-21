@@ -28,10 +28,10 @@ const fs = require("fs");
 //   console.error("Error: ", err);
 // }
 
-// fs.writeFile("example.txt", "Node.js", (err) => {
-//   if (err) {
-//     console.error(err);
-//     return;
-//   }
-//   console.log("file created successfully  ");
-// });
+fs.appendFile("example.txt", " \n append File ", (err) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log("file created successfully  ");
+});
