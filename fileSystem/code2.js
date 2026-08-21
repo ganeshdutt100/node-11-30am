@@ -13,19 +13,26 @@ const { finished } = require("stream");
 //   console.log("Error : ", err);
 // });
 
-const writeStream = fs.createWriteStream("file1.txt");
-writeStream.write("Code2 \n");
-writeStream.write("writeStream \n");
+// const writeStream = fs.createWriteStream("file1.txt");
+// writeStream.write("Code2 \n");
+// writeStream.write("writeStream \n");
+//
+// writeStream.end();
+//
+// writeStream.on("finish", () => {
+//   console.log("writing finished");
+// });
+//
+// writeStream.on("error", (err) => {
+//   console.log("Error : ", err);
+// });
 
-writeStream.end();
+// const readStream = fs.createReadStream("task.txt");
+// const writeStream = fs.createWriteStream("file1.txt");
+//
+// readStream.pipe(writeStream);
+// console.log("copy");
 
-writeStream.on("finish", () => {
-  console.log("writing finished");
-});
-
-writeStream.on("error", (err) => {
-  console.log("Error : ", err);
-});
 // const data = fs.readFileSync("task.txt");
 // console.log(data);
 // console.log(data.toString());
