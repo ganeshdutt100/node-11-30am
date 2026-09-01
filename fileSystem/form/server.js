@@ -6,13 +6,10 @@ const PORT = 3000;
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
     res.setHeader("Content-Type", "text/html");
+
     res.end(
       `
-        <form action="/message" method="POST">
-        <input type="text" placeholder="Enter your name " name="username" > <br><br>
-        <input type="text" placeholder="Enter your course " name="course" > <br><br>
-        <button type="submit" >submit</button>
-        </form>
+     
         `,
     );
   } else if (req.url === "/message" && req.method === "POST") {
