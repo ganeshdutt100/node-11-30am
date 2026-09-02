@@ -1,0 +1,48 @@
+ Assignments: Express.js Routing Practice
+Task 1: The "Movie Library" (Modular Approach)
+
+Create a separate file named moviesData.js.
+
+Create an array of 3 movie objects inside it (Keys: id, title, releaseYear).
+
+Export this array.
+
+Goal: In your server.js, import this file and create a route /api/movies. When a user visits this route, send the movies array as a JSON response.
+
+Task 2: The "Complex User Profile" (Nested JSON Object)
+Create a route /api/profile. Do not use a separate file, create the data directly inside the route.
+
+Goal: When the user hits this route, they should receive a single JSON object. But this object must be nested.
+
+Format required: It must have normal strings (name, email), an Array for skills (e.g., ["HTML", "CSS", "JS"]), and an Object for address (e.g., { city: "Delhi", pincode: 110001 }).
+
+Task 3: The "Product Finder" (req.params & 404 Error handling)
+Create an array of products in server.js:
+[{ id: 101, name: "Keyboard", price: 500 }, { id: 102, name: "Mouse", price: 300 }]
+
+Goal: Create a route /api/products/:id.
+
+Condition 1: If a user visits /api/products/101, remember to convert req.params.id from String to Number, find the product, and send its data.
+
+Condition 2: If the user visits /api/products/999, the server must send a 404 status code with this exact JSON: { error: true, message: "Product missing!" }.
+
+Task 4: The "Category Filter" (req.query)
+Create an array of food items in server.js:
+[{name: "Burger", type: "FastFood"}, {name: "Apple", type: "Healthy"}, {name: "Pizza", type: "FastFood"}]
+
+Goal: Create a route /api/food.
+
+Condition 1: If the user visits just /api/food, send the entire array.
+
+Condition 2: If the user visits /api/food?type=Healthy, catch the query and use Array.filter() to return ONLY the "Healthy" items.
+
+Task 5: The "Merge & Search" Challenge (Combined Concepts)
+
+Create a file frontend.js and export an array: ["React", "Angular", "Vue"].
+
+Create a file backend.js and export an array: ["Node", "Python", "Java"].
+
+Import both into server.js.
+
+Goal: Create a route /api/tech. Send a combined JSON object that looks like this:
+{ frontendTech: ["React", "Angular", "Vue"], backendTech: ["Node", "Python", "Java"] }
