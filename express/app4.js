@@ -6,10 +6,11 @@ const app = express();
 //   res.send("Hello World");
 // });
 
-// app.get("/users/:name", (req, res) => {
-//   const userName = req.params.name;
-//   res.send(`User Name: ${userName}`);
-// });
+app.get("/users/:name/:age", (req, res) => {
+  const userName = req.params.name;
+  const userAge = req.params.age;
+  res.send(`User Name: ${userName}, Age: ${userAge}`);
+});
 const instaFinder = [
   { username: "webgyaan.com", fullName: "Ganesh Dutt", followers: 700 },
   { username: "ducat", fullName: "Ducat", followers: 1000 },

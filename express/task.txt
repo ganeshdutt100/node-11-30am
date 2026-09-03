@@ -69,3 +69,40 @@ Goal: Create a dynamic route /api/account/:accNo.
 Condition 1: When a user visits /api/account/102 in their browser, they should receive the JSON details of that specific account.
 
 The Trick: The req.params.accNo received from the URL is always a String (e.g., "102"), but the accNo inside your array is a Number. The main goal of this task is to understand why you must convert the String into a Number (using parseInt() or Number()) before using the Array.find() method.
+
+
+
+--------------------------------
+
+Task 1: The "Employee ID" Lookup (Basic Number Param)
+Setup: Create an array of 3 employees in your file:
+[{ empId: 1, name: "Aman", role: "Developer" }, { empId: 2, name: "Priya", role: "Designer" }, { empId: 3, name: "Rohan", role: "Manager" }].
+Goal: Create a route /api/employees/:empId.
+
+Condition: When a user visits /api/employees/2, use parseInt() to convert the URL parameter into a number, find the employee with empId 2, and send their data.
+
+Task 2: The "Country Capital" Finder (Basic String Param)
+Setup: Create an array of 3 countries:
+[{ country: "india", capital: "New Delhi" }, { country: "japan", capital: "Tokyo" }, { country: "france", capital: "Paris" }].
+Goal: Create a route /api/countries/:countryName.
+
+Condition: When a user visits /api/countries/japan, extract the parameter from the URL, find the matching country object in the array, and send it as a JSON response. (Hint: No need to use parseInt here because it's a word/string!)
+
+Task 3: The "Restaurant Menu" (Params + 404 Error Handling)
+Setup: Create an array of food items:
+[{ id: 101, dish: "Pizza", price: 299 }, { id: 102, dish: "Burger", price: 99 }].
+Goal: Create a route /api/menu/:id.
+
+Condition 1: If the user visits /api/menu/101, send the Pizza details.
+
+Condition 2: If the user visits an ID that does not exist (like /api/menu/999), write an if/else condition to send a 404 status with this message: { message: "Sorry, dish not found!" }.
+
+----
+extra 
+Task 3: The "E-Commerce Laptop" Filter (req.query Basics)
+Setup: Create an array of 4 laptop objects in your file. Required keys: id, brand, and price. (e.g., { id: 1, brand: "Dell", price: 45000 }, keep 2 laptops of the same brand like "HP").
+Goal: Create a route /api/laptops.
+
+Condition 1: If a user visits /api/laptops, send the entire array of laptops.
+
+Condition 2: If a user visits /api/laptops?brand=HP, catch the query parameter and use Array.filter() to send ONLY the HP laptops.
