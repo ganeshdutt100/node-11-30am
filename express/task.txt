@@ -46,3 +46,26 @@ Import both into server.js.
 
 Goal: Create a route /api/tech. Send a combined JSON object that looks like this:
 { frontendTech: ["React", "Angular", "Vue"], backendTech: ["Node", "Python", "Java"] }
+
+
+new task (params)
+Task 1: The "Instagram Profile" Finder (String Params & Error Handling)
+
+Setup: Create an array containing 3 user objects. Required keys: username, fullName, and followers. (e.g., { username: "webgyaan", fullName: "Ganesh Dutt", followers: 5000 }).
+
+Goal: Create a dynamic route /api/profile/:username.
+
+Condition 1: If a user visits /api/profile/webgyaan in the browser, extract the username using req.params.username, find that specific user from the array, and send their data as a JSON response.
+
+Condition 2: If the user enters a username that does not exist in the array (e.g., /api/profile/salman), prevent the server from crashing. Instead, return a 404 status code with this exact JSON message: { error: "Profile not found!" }.
+
+
+Task 2: The "Bank Account" Lookup (The parseInt Trap)
+
+Setup: Create an array containing data for 3 bank accounts. Required keys: accNo (this must be a Number, e.g., 101, 102), accountHolder, and balance.
+
+Goal: Create a dynamic route /api/account/:accNo.
+
+Condition 1: When a user visits /api/account/102 in their browser, they should receive the JSON details of that specific account.
+
+The Trick: The req.params.accNo received from the URL is always a String (e.g., "102"), but the accNo inside your array is a Number. The main goal of this task is to understand why you must convert the String into a Number (using parseInt() or Number()) before using the Array.find() method.
