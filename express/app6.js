@@ -12,12 +12,10 @@ const mobiles = [
 ];
 app.get("/api/mobiles", (req, res) => {
   const { brand } = req.query;
-
+  if (!brand) return res.json(mobiles);
   const selectBrand = Array.isArray(brand) ? brand : [brand];
 
-  const filterBrand = mobiles.filter((m) => {
-    selectBrand.includes(m.brand);
-  });
+  const filterBrand = mobiles.filter((m) => selectBrand.includes(m.brand));
 
   res.json(filterBrand);
 });
