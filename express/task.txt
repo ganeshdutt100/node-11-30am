@@ -106,3 +106,21 @@ Goal: Create a route /api/laptops.
 Condition 1: If a user visits /api/laptops, send the entire array of laptops.
 
 Condition 2: If a user visits /api/laptops?brand=HP, catch the query parameter and use Array.filter() to send ONLY the HP laptops.
+
+
+
+params and body Task ----
+Task: The "Student Profile Updater" (Params + Body Combo)
+
+Setup: Create an array of students directly in your server.js file:
+[{ id: 1, name: "John", course: "HTML" }, { id: 2, name: "Sarah", course: "CSS" }]
+
+Goal: Create a PUT route: /api/students/:id
+
+The Concept: This task combines two concepts. You need req.params to know WHO to update, and req.body to know WHAT new information to put there.
+
+Condition 1: A user sends a PUT request to /api/students/1 using Thunder Client. In the JSON body, they send: { "newCourse": "React" }.
+
+Condition 2: Your server must extract the id from the URL, find the matching student in the array, and update their course to the new one sent in the body.
+
+Condition 3: Send the updated student object back in the JSON response.
