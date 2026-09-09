@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const path = require("path");
+
 app.use((req, res, next) => {
   console.log(`route  -  ${req.url}`);
   next();
@@ -29,17 +31,11 @@ app.get("/projects", (req, res) => {
 });
 
 app.get("/dashboard", checkAdmin, (req, res) => {
-  res.send("Admin Dashboard :  Ganesh Dutt");
+  res.sendFile(path.join(__dirname, "dashboard.html"));
 });
 
 app.use((req, res, next) => {
-  res.status(404).send(
-    `
-      <div style="text-align:center; margin-top:50px">
-        <h1 style="color:red" >404 page not found</h1>
-      </div>
-        `,
-  );
+  res.status(404).sendFile(path.join(__dirname, "pageNotFound.html"));
 });
 app.listen(4000, () => {
   console.log("Server is running on http://localhost:4000");
