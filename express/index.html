@@ -22,6 +22,28 @@
     </form>
     <p id="message">loading...</p>
 
-    <script></script>
+    <script>
+      document
+        .getElementById("memberForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const memeberName = document.getElementById("name").value;
+          const memberPlan = document.getElementById("plan").value;
+
+          const response = await fetch("/api/members", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: memeberName, plan: memberPlan }),
+          });
+          const result = await response.json();
+
+          if (response.ok) {
+            document.getElementById("message").innerText =
+              "Member data save successfully";
+            document.getElementById(memberForm).reset();
+          }
+        });
+    </script>
   </body>
 </html>
