@@ -33,6 +33,7 @@ const validateMember = (req, res, next) => {
       error: "name  and plan empty nhi honge ",
     });
   }
+
   next();
 };
 
