@@ -1,26 +1,28 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 import "./App.css";
+import Form from "./components/Form";
 
 function App() {
-  const [students, setStudents] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/api/students")
-      .then((res) => {
-        return res.json();
-      })
-      // .then((res) => res.json())
-      .then((data) => {
-        setStudents(data);
-      })
-      .catch((err) => {
-        console.log("Server nhi chal rha hai :  ", err);
-      });
-  }, []);
+  // const [students, setStudents] = useState([]);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/students")
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     // .then((res) => res.json())
+  //     .then((data) => {
+  //       setStudents(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Server nhi chal rha hai :  ", err);
+  //     });
+  // }, []);
 
   return (
     <>
-      <div>
+      <Form />
+      {/* <div>
         <h2>My Students : </h2>
         <ul>
           {students.length > 0 ? (
@@ -33,7 +35,7 @@ function App() {
             <p>loading...</p>
           )}
         </ul>
-      </div>
+      </div> */}
     </>
   );
 }
