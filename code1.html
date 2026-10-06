@@ -3,12 +3,146 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JS Pagination</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+      .data-list .item {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      .data-list .item:last-child {
+        border-bottom: none;
+      }
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .pagination button {
+        padding: 8px 12px;
+        border: 1px solid #007bff;
+        background: white;
+        color: #007bff;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: 0.3s;
+      }
+      .pagination button:hover {
+        background: #e2e6ea;
+      }
+      .pagination button.active {
+        background: #007bff;
+        color: white;
+      }
+      .pagination button:disabled {
+        background: #e9ecef;
+        color: #6c757d;
+        border-color: #dee2e6;
+        cursor: not-allowed;
+      }
+    </style>
   </head>
   <body>
+    <div class="container">
+      <h2>Pagination Example</h2>
+      <!-- Data yahan render hoga -->
+      <div id="data-container" class="data-list"></div>
+
+      <!-- Pagination buttons yahan aayenge -->
+      <div id="pagination-container" class="pagination"></div>
+    </div>
+
     <script>
-      let a = prompt("enter your num");
-      alert(a);
+      // Dummy data generate kar rahe hain (Example: 50 items)
+      const listItems = Array.from(
+        { length: 50 },
+        (_, index) => `Student / Item ${index + 1}`,
+      );
+
+      const dataContainer = document.getElementById("data-container");
+      const paginationContainer = document.getElementById(
+        "pagination-container",
+      );
+
+      // State variables
+      let currentPage = 1;
+      let rowsPerPage = 5; // Ek page par kitne items dikhane hain
+
+      // Function: Items ko screen par display karne ke liye
+      function displayData(items, wrapper, rowsPerPage, page) {
+        wrapper.innerHTML = ""; // Purana data clear karein
+        page--; // Array index 0 se start hota hai
+
+        // Start aur End index calculate karein
+        let start = rowsPerPage * page;
+        let end = start + rowsPerPage;
+
+        // Slice function se current page ka data nikaalein
+        let paginatedItems = items.slice(start, end);
+
+        // Data ko DOM me append karein
+        paginatedItems.forEach((item) => {
+          let itemElement = document.createElement("div");
+          itemElement.classList.add("item");
+          itemElement.innerText = item;
+          wrapper.appendChild(itemElement);
+        });
+      }
+
+      // Function: Pagination buttons banane ke liye
+      function setupPagination(items, wrapper, rowsPerPage) {
+        wrapper.innerHTML = "";
+
+        // Total pages calculate karein (ex: 50/5 = 10 pages)
+        let pageCount = Math.ceil(items.length / rowsPerPage);
+
+        for (let i = 1; i <= pageCount; i++) {
+          let btn = paginationButton(i, items);
+          wrapper.appendChild(btn);
+        }
+      }
+
+      // Function: Single button create karne aur usme event listener lagane ke liye
+      function paginationButton(page, items) {
+        let button = document.createElement("button");
+        button.innerText = page;
+
+        // Agar current page hai, toh active class laga dein
+        if (currentPage === page) button.classList.add("active");
+
+        button.addEventListener("click", function () {
+          currentPage = page;
+
+          // Data update karein
+          displayData(items, dataContainer, rowsPerPage, currentPage);
+
+          // Active class ko naye button par shift karein
+          let currentBtn = document.querySelector(".pagination button.active");
+          if (currentBtn) currentBtn.classList.remove("active");
+          button.classList.add("active");
+        });
+
+        return button;
+      }
+
+      // App Initialize karein
+      displayData(listItems, dataContainer, rowsPerPage, currentPage);
+      setupPagination(listItems, paginationContainer, rowsPerPage);
     </script>
   </body>
 </html>

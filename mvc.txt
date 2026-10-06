@@ -1,0 +1,105 @@
+ What is MVC?
+
+MVC stands for Model–View–Controller.
+
+MVC is a software architectural pattern used to organize an application into three separate parts: Model, View, and Controller.
+
+The main purpose of MVC is to separate different responsibilities of an application, which makes the code easier to understand, maintain, test, and modify.
+
+ 1. Model
+
+The Model is responsible for data and database-related operations.
+
+It handles things like:
+
+ Creating data
+ Reading data
+ Updating data
+ Deleting data
+ Communicating with the database
+
+Example:
+If we have a User application, the User Model will handle user data such as:
+
+js
+{
+    name: "Ganesh",
+    email: "ganesh@gmail.com",
+    age: 25
+}
+
+
+---
+
+ 2. View
+
+The View is responsible for what the user sees.
+
+It displays the data received from the application.
+
+For example:
+
+ HTML page
+ User profile
+ Product page
+ Dashboard
+
+In a Node.js REST API, we usually don't have a traditional View because the API generally sends JSON responses to the frontend.
+
+---
+
+ 3. Controller
+
+The Controller contains the main application/business logic.
+
+It receives the request from the route, communicates with the Model, and sends the appropriate response.
+
+For example:
+
+text
+User sends request
+       ↓
+Controller receives request
+       ↓
+Controller asks Model for data
+       ↓
+Model gets data from Database
+       ↓
+Controller sends response
+
+
+---
+
+ Simple Example
+
+Suppose a user wants to see all users:
+
+text
+GET /users
+
+
+The flow will be:
+
+text
+          User Request
+               ↓
+             Route
+               ↓
+          Controller
+               ↓
+             Model
+               ↓
+           Database
+               ↓
+             Model
+               ↓
+          Controller
+               ↓
+          JSON Response
+
+
+ In one line:
+
+> Model handles the data, View handles the UI, and Controller handles the application logic.
+
+So basically, MVC separates the application into different responsibilities instead of writing everything in one file. This makes a large application much easier to manage.

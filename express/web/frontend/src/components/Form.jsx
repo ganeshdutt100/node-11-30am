@@ -47,7 +47,7 @@ const Form = () => {
         <input
           type="email"
           name="email"
-          value={form.value}
+          value={form.email}
           onChange={handleChanges}
         />{" "}
         <br />
