@@ -20,9 +20,14 @@
            <%  tasks.forEach(task =>{ %>
 <li>
     <%= task.text %>
+    <form action="/delete/<%= task.id %>" method="POST">
+        <button type="submit" >Delete</button>
+    </form>
 </li>
           <%  })  %>
-       <% } %>
+       <% }else {%>
+        <p>No Task  here </p>
+        <%}%>
     </ul>
   </body>
 </html>

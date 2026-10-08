@@ -10,13 +10,13 @@ const handleAddTask = (req, res) => {
   if (newTask) {
     TaskModel.addTask(newTask);
   }
-  res.render("/");
+  res.redirect("/");
 };
 
 const handleDeleteTask = (req, res) => {
   const idToDelete = parseInt(req.params.id);
   TaskModel.deleteTask(idToDelete);
-  res.render("/");
+  res.redirect("/");
 };
 
 module.exports = {
