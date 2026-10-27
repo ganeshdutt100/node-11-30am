@@ -1,0 +1,44 @@
+TEST
+1 - Pure CSS Collapsible Tree View (No JavaScript)
+Construct a nested, infinite-depth folder tree UI using pure HTML (<input type="checkbox"> or <details>/<summary>) and CSS.
+	Requirements:
+	Expanding or collapsing a parent folder toggles only its immediate and sub-children.
+	Connect tree nodes using dashed vertical and horizontal lines (::before / ::after) that automatically terminate cleanly at the last leaf node.
+2- box-sizing: content-box vs. border-box: If a <div> has width: 200px, padding: 20px, and border: 5px solid black, what is its total rendered width under content-box versus border-box? Why is *, *::before, *::after { box-sizing: border-box; } standard practice in CSS resets?
+
+3- Specificity Calculation Battle: Calculate the specificity score (Inline, ID, Class/Attribute/Pseudo-class, Element/Pseudo-element) for each of the following selectors and determine which rule wins for <button class="btn btn-primary" id="submit" type="submit">:
+	Rule A: div#container button.btn.btn-primary
+	Rule B: #submit[type="submit"]
+	Rule C: body #submit.btn
+4 - position: absolute vs. position: fixed vs. position: sticky:
+	What determines the containing block (reference ancestor) for an element with position: absolute?
+	What common CSS property applied to an ancestor element can accidentally break position: fixed, forcing it to behave like position: absolute?
+	Why does position: sticky fail to stick if an ancestor has overflow: hidden?
+5- Why can't you mix BigInt and Number in standard arithmetic operations (e.g., 10n + 5)? How do you create unique hidden object keys using Symbol, and why are they ignored by JSON.stringify()?
+6- Mutating vs. Non-Mutating Methods: Group these array methods into Mutating (alters the original array) and Non-Mutating (returns a new array or value):splice(), slice(), pop(), map(), sort(), filter(), reverse(), toReversed(), fill().
+7 - Arrays: Write a program to create an array of 10 numbers and print the following:
+- All even numbers
+- All odd numbers
+- The sum of all array elements
+- The total number of even and odd elements
+
+8 - Write a function normalizeData(data) that takes an array containing mixed and nested types (NaN, null, undefined, integers, floats as strings, boolean strings, nested arrays).
+	Rules:
+	String numbers ("42", "3.14") → convert to native numbers.
+	String booleans ("true", "false") → convert to actual booleans.
+	Remove all null, undefined, and NaN values completely.
+	Flatten all nested arrays by exactly 1 level.
+	Use standard iteration or array methods without relying on eval() or .flat().
+9 - Write a function calculateUtilityBill(units, customerType) calculating an electricity bill using tiered bracket pricing and conditions:
+	Tiers (Residential):
+	First 100 units: ₹3.00/unit
+	Next 200 units (101–300): ₹4.50/unit
+	Above 300 units: ₹6.00/unit
+	Tiers (Commercial):
+	Flat ₹7.00/unit for all units, but if total units exceed 500, apply a 10% surcharge on the total bill.
+	Requirements:
+	Refactor to avoid deeply nested if/else statements (use clean lookup arrays or early exits).
+	Throw an error if units is negative or not a valid number.
+
+10 - The document.write() Tokenizer Interruption: What happens when an inline <script> calls document.write("</div><span>") while the HTML parser is actively constructing the DOM? Under what exact network and parsing conditions will modern Chromium/WebKit browsers intervene and refuse to execute document.write()?
+
