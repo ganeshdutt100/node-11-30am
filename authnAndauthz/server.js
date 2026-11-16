@@ -28,6 +28,16 @@ function authenticate(req, res, next) {
   next();
 }
 
+// AUTHORIZATION: "What can you do?" -> does the user have the right role?
+function authorize(role) {
+  return (req, res, next) => {
+    if (req.cookies.role !== role) {
+      return res.status(403).send("You are not allowed"); // 403 = no permission
+    }
+    next();
+  };
+}
+
 // Any logged-in user can open this (only AuthN)
 app.get("/profile", authenticate, (req, res) => {
   res.send("Hello " + req.cookies.email);
