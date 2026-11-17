@@ -49,3 +49,9 @@ app.get("/admin", authenticate, authorize("admin"), (req, res) => {
 app.listen(5000, () => {
   console.log("server start at http://localhost:5000");
 });
+
+// ganesh;
+// // 123456asdfghjzxcvbqwer2345
+// sdvbn3456789;
+// sdfghjkljhgfdsa234567890;
+// dfghjhgfew3456789;
